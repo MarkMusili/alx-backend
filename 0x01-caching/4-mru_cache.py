@@ -2,8 +2,9 @@
 """
 MRU caching
 """
-BaseCaching = __import__('base_caching').BaseCaching
 from collections import OrderedDict
+BaseCaching = __import__('base_caching').BaseCaching
+
 
 class LRUCache(BaseCaching):
     """

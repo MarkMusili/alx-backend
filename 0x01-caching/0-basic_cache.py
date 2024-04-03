@@ -4,6 +4,7 @@ BasicCache implimentation
 """
 BaseCaching = __import__('base_caching').BaseCaching
 
+
 class BasicCache(BaseCaching):
     """
     BaseCache class
@@ -29,4 +30,3 @@ class BasicCache(BaseCaching):
         if key is None:
             return
         return self.cache_data.get(key)
-    

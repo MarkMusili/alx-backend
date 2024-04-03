@@ -4,16 +4,17 @@ FIFO caching
 """
 BaseCaching = __import__('base_caching').BaseCaching
 
+
 class FIFOCache(BaseCaching):
     """
-    FIFO Caching implimentation 
+    FIFO Caching implimentation
     """
     def __init__(self):
         """
         Initializer for the class FIFO
         """
         super().__init__()
-    
+
     def put(self, key, item):
         """
         Add an item to the cache
@@ -33,4 +34,3 @@ class FIFOCache(BaseCaching):
         if key is None:
             return
         return self.cache_data.get(key)
-    

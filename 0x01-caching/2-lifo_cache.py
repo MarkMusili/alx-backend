@@ -4,16 +4,17 @@ LIFO caching
 """
 BaseCaching = __import__('base_caching').BaseCaching
 
+
 class LIFOCache(BaseCaching):
     """
-    LIFO Caching implimentation 
+    LIFO Caching implimentation
     """
     def __init__(self):
         """
         Initializer for the class LIFO
         """
         super().__init__()
-    
+
     def put(self, key, item):
         """
         Add an item to the cache
