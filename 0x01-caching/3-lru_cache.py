@@ -3,17 +3,19 @@
 LRU caching
 """
 BaseCaching = __import__('base_caching').BaseCaching
+from collections import OrderedDict
 
 class LRUCache(BaseCaching):
     """
-    LRU Caching implimentation 
+    LRU Caching implementation
     """
     def __init__(self):
         """
         Initializer for the class LRU
         """
         super().__init__()
-    
+        self.order = OrderedDict()
+
     def put(self, key, item):
         """
         Add an item to the cache
@@ -21,17 +23,19 @@ class LRUCache(BaseCaching):
         if key is None or item is None:
             return
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            first = sorted(self.cache_data.keys())[0]
-            print(f"DISCARD: {first}")
-            self.cache_data.pop(first)
+            discarded_key, _ = self.order.popitem(last=False)
+            print(f"DISCARD: {discarded_key}")
+            self.cache_data.pop(discarded_key)
+        self.order[key] = None
         self.cache_data[key] = item
 
     def get(self, key):
         """
         Get an item from the cache
         """
-        if key is None and key not in self.cache_data:
-            return
-        item = self.cache_data.pop(key, None)
-        self.cache_data[key] = item
-        return item
+        if key is None or key not in self.cache_data:
+            return None
+        value = self.cache_data[key]
+        del self.order[key]
+        self.order[key] = None
+        return value
