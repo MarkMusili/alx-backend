@@ -6,7 +6,7 @@ from collections import OrderedDict
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class LRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """
     MRU Caching implementation
     """
