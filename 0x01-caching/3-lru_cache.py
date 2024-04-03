@@ -30,7 +30,7 @@ class LRUCache(BaseCaching):
         """
         Get an item from the cache
         """
-        if key is None:
+        if key is None and key not in self.cache_data:
             return
         item = self.cache_data.pop(key, None)
         self.cache_data[key] = item
