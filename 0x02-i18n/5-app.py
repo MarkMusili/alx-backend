@@ -17,6 +17,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 class Config:
     """
     Config class for Babel
@@ -41,13 +42,14 @@ def get_locale():
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-def get_user(id : int = None) -> dict:
+def get_user(id: int = None) -> dict:
     """
     Get users from url parameter
     """
     if id is None:
         return None
     return users.get(int(id))
+
 
 @app.before_request
 def before_request():
@@ -56,7 +58,6 @@ def before_request():
     """
     g.user = get_user(request.args.get('login_as'))
 
-    
 
 @app.route('/')
 def index():
