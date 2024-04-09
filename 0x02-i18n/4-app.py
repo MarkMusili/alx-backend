@@ -41,7 +41,7 @@ def index():
     """
     home_title = gettext("home_title")
     home_header = gettext("home_header")
-    return render_template('3-index.html', home_title=home_title,
+    return render_template('4-index.html', home_title=home_title,
                            home_header=home_header)
 
 

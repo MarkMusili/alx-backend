@@ -66,6 +66,19 @@ def before_request():
     g.user = get_user(request.args.get('login_as'))
 
 
+def get_locale():
+    """
+    Get locale from request
+    """
+    if request.args.get('locale'):
+        return request.args.get('locale')
+    if g.user:
+        return g.user.get('locale')
+    if current_user.is_authenticated:
+        return current_user.locale
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
 @app.route('/')
 def index():
     """
