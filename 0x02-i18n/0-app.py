@@ -2,14 +2,16 @@
 """
 Flask app implimentation
 """
-from typing import Any
 from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def index() -> Any:
+def index():
+    """
+    Render the index page
+    """
     return render_template('0-index.html')
 
 
